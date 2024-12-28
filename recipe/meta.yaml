@@ -13,21 +13,22 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python >=3.5
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.5
+    - python >={{ python_min }}
 
 test:
   imports:
     - forge
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
